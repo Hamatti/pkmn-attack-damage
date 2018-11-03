@@ -1,18 +1,7 @@
 function costMap(cost) {
-  var _map = {
-    Grass: "[G]",
-    Fire: "[R]",
-    Water: "[W]",
-    Lightning: "[L]",
-    Fighting: "[F]",
-    Psychic: "[P]",
-    Colorless: "[C]",
-    Darkness: "[D]",
-    Metal: "[M]",
-    Fairy: "[Y]"
-  };
-
-  return _map[cost];
+  const node = document.createElement("img");
+  node.src = `assets/${cost.toLowerCase()}.png`;
+  return node;
 }
 
 var STANDARD_FORMAT_SETS = [
@@ -106,7 +95,14 @@ button.addEventListener("click", function(ev) {
       let thead = document.createElement("thead");
       table.appendChild(thead);
 
-      let headers = ["Pokemon / Card", "Name", "Damage", "Cost", "Description"];
+      let headers = [
+        "Pokemon / Card",
+        "Name",
+        "Type",
+        "Damage",
+        "Cost",
+        "Description"
+      ];
       let tr = document.createElement("tr");
       headers.map(function(header) {
         let th = document.createElement("th");
@@ -134,10 +130,9 @@ button.addEventListener("click", function(ev) {
 
           let attackCost = document.createElement("td");
           let costString = "";
-          let costs = attack.cost.map(function(cost) {
-            return costMap(cost);
+          attack.cost.forEach(function(cost) {
+            attackCost.appendChild(costMap(cost));
           });
-          attackCost.appendChild(document.createTextNode(costs.join("")));
 
           let attackDesc = document.createElement("td");
           attackDesc.appendChild(document.createTextNode(attack.text));
@@ -145,7 +140,13 @@ button.addEventListener("click", function(ev) {
           let attackDamage = document.createElement("td");
           attackDamage.appendChild(document.createTextNode(attack.damage));
 
+          let pokemonType = document.createElement("td");
+          card.types.forEach(function(type) {
+            pokemonType.appendChild(costMap(type));
+          });
+
           tr.appendChild(attackName);
+          tr.appendChild(pokemonType);
           tr.appendChild(attackDamage);
           tr.appendChild(attackCost);
           tr.appendChild(attackDesc);
