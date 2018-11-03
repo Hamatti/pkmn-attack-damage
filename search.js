@@ -102,7 +102,7 @@ button.addEventListener("click", function(ev) {
       // Remove old result
       document.getElementById("results").innerHTML = "";
       let table = document.createElement("table");
-      table.className = "table";
+      table.className = "table sortable";
       let thead = document.createElement("thead");
       table.appendChild(thead);
 
@@ -155,5 +155,6 @@ button.addEventListener("click", function(ev) {
       });
 
       document.getElementById("results").appendChild(table);
+      sorttable.makeSortable(table);
     });
 });
