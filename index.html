@@ -20,7 +20,8 @@
 
         <label for="damage">
             Damage:
-            <input type="number" id="damage" name="damage" />
+            <input type="number" id="damage" name="damage" onkeydown = "if (event.keyCode == 13)
+            document.getElementById('submit').click()" />
         </label>
         <button id="submit">Search</button><br>
         <label for="standard">Standard:</label><input type="checkbox" id="standard" />

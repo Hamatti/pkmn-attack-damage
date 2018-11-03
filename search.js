@@ -101,6 +101,8 @@ button.addEventListener("click", function(ev) {
       return response.json();
     })
     .then(function(data) {
+      // Remove old result
+      document.getElementById("results").innerHTML = "";
       let table = document.createElement("table");
       table.className = "table";
       let thead = document.createElement("thead");
