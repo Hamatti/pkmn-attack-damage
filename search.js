@@ -1,3 +1,9 @@
+function dynamicSort(property) {
+  return function(a, b) {
+    return a[property].localeCompare(b[property]);
+  };
+}
+
 function costMap(cost) {
   const node = document.createElement("img");
   node.src = `assets/${cost.toLowerCase()}.png`;
@@ -90,6 +96,14 @@ button.addEventListener("click", function(ev) {
     .then(function(data) {
       // Remove old result
       document.getElementById("results").innerHTML = "";
+
+      var cards = data.cards;
+      cards.sort(dynamicSort("name"));
+
+      cards = _.uniqBy(cards, c =>
+        JSON.stringify([c.name, c.attacks, c.hp, c.retreatCost, c.types])
+      );
+
       let table = document.createElement("table");
       table.className = "table sortable";
       let thead = document.createElement("thead");
@@ -114,7 +128,7 @@ button.addEventListener("click", function(ev) {
       let tbody = document.createElement("tbody");
       table.appendChild(tbody);
 
-      data.cards.map(function(card) {
+      cards.map(function(card) {
         let tr = document.createElement("tr");
         let id = document.createElement("td");
         id.appendChild(document.createTextNode(`${card.name} (${card.id})`));
@@ -142,7 +156,15 @@ button.addEventListener("click", function(ev) {
 
           let pokemonType = document.createElement("td");
           card.types.forEach(function(type) {
-            pokemonType.appendChild(costMap(type));
+            const child = costMap(type);
+            const hidden_type = document.createElement("span");
+            hidden_type.appendChild(
+              document.createTextNode(type.toLowerCase())
+            );
+            hidden_type.className = "hidden";
+            pokemonType.appendChild(hidden_type);
+            child.setAttribute("sorttable_customkey", type);
+            pokemonType.appendChild(child);
           });
 
           tr.appendChild(attackName);
