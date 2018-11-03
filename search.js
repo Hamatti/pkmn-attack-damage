@@ -1,5 +1,3 @@
-var button = document.getElementById("submit");
-
 function costMap(cost) {
   var _map = {
     Grass: "[G]",
@@ -73,6 +71,8 @@ var EXPANDED_FORMAT_SETS = [
   "sm75",
   "sm8"
 ].join("|");
+
+var button = document.getElementById("submit");
 
 button.addEventListener("click", function(ev) {
   ev.preventDefault();
