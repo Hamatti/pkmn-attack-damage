@@ -29,7 +29,7 @@ var STANDARD_FORMAT_SETS = [
   "sm7",
   "sm75",
   "sm8"
-].join(",");
+].join("|");
 
 var EXPANDED_FORMAT_SETS = [
   "bwp",
@@ -72,23 +72,21 @@ var EXPANDED_FORMAT_SETS = [
   "sm7",
   "sm75",
   "sm8"
-].join(",");
+].join("|");
 
 button.addEventListener("click", function(ev) {
   ev.preventDefault();
   var damageValue = document.getElementById("damage").value;
-  var standard = document.getElementById("standard").checked;
   var expanded = document.getElementById("expanded").checked;
-
-  if (!standard || !expanded) {
-    standard = true;
+  var setQuery = "";
+  if (expanded) {
+    setQuery = `&setCode=${EXPANDED_FORMAT_SETS}`;
+  } else {
+    setQuery = `&setCode=${STANDARD_FORMAT_SETS}`;
   }
 
-  var standardLegalQuery = `&standardLegal=${standard}`;
-  var expandedLegalQuery = `&expandedLegal=${expanded}`;
-
   var request = new Request(
-    `https://api.pokemontcg.io/v1/cards?attackDamage=${damageValue}${standardLegalQuery}${expandedLegalQuery}`,
+    `https://api.pokemontcg.io/v1/cards?attackDamage=${damageValue}${setQuery}`,
     {
       headers: new Headers({
         "Page-Size": 1000
@@ -108,7 +106,7 @@ button.addEventListener("click", function(ev) {
       let thead = document.createElement("thead");
       table.appendChild(thead);
 
-      let headers = ["Pokemon / Card", "Name", "Cost", "Description"];
+      let headers = ["Pokemon / Card", "Name", "Damage", "Cost", "Description"];
       let tr = document.createElement("tr");
       headers.map(function(header) {
         let th = document.createElement("th");
@@ -144,7 +142,11 @@ button.addEventListener("click", function(ev) {
           let attackDesc = document.createElement("td");
           attackDesc.appendChild(document.createTextNode(attack.text));
 
+          let attackDamage = document.createElement("td");
+          attackDamage.appendChild(document.createTextNode(attack.damage));
+
           tr.appendChild(attackName);
+          tr.appendChild(attackDamage);
           tr.appendChild(attackCost);
           tr.appendChild(attackDesc);
         }
