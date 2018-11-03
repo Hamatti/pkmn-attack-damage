@@ -10,6 +10,4 @@ As this is a quick and dirty draft, I'll add features slowly.
 
 Things missing or not working exactly as should:
 
-- Filter by set / format
 - Filter by other fields than **Damage**
-- Pagination (right now just returns 100 first cards)
