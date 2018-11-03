@@ -1,0 +1,36 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Find Pokemon TCG cards by Attack Damage</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+
+    <style>
+        input[type="checkbox"] {
+            margin-left: 10px;
+            margin-right: 30px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Card Finder - by Attack Damage</h1>
+
+        <label for="damage">
+            Damage:
+            <input type="number" id="damage" name="damage" />
+        </label>
+        <button id="submit">Search</button><br>
+        <label for="standard">Standard:</label><input type="checkbox" id="standard" />
+        <label for="expanded">Expanded:</label><input type="checkbox" id="expanded" />
+
+        <div id="results">
+
+        </div>
+    </div>
+
+    <script src="search.js"></script>
+</body>
+</html>
