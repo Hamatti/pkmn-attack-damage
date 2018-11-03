@@ -32,6 +32,32 @@
         .hidden {
             display: none;
         }
+
+        body {
+            display: flex;
+            min-height: 100vh;
+            flex-direction: column;
+        }
+
+        .container {
+            flex: 1;
+        }
+
+        footer {
+            text-align: center;
+            background: black;
+            color: white;
+            padding: 10px;
+        }
+
+        footer a {
+            color: white;
+            text-decoration: underline
+        }
+
+        footer a:hover {
+            color: white;
+        }
     </style>
 
     <script src="sorttable.js"></script>
@@ -55,6 +81,11 @@
 
         <a href="https://github.com/hamatti/pkmn-attack-damage" target=_blank><img style="position: absolute; top: 0; left: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_left_darkblue_121621.png" alt="Fork me on GitHub"></a>
     </div>
+
+    <footer>
+        <p>This app is built by <a href="https://twitter.com/hamatti" target=_blank>Hamatti</a> with the help of <a href="https://pokemontcg.io" target=_blank>PokemonTCG.io API</a>.</p>
+        <p>Supported by <img src="assets/chilicorn.svg" height="30px"/> <a href="https://spiceprogram.org" target=_blank>Spice Program</a>.</p>
+    </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.11/lodash.min.js"></script>
     <script src="search.js"></script>
