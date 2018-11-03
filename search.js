@@ -89,6 +89,8 @@ button.addEventListener("click", function(ev) {
     }
   );
 
+  var hideDuplicates = document.getElementById("duplicates").checked;
+
   fetch(request)
     .then(function(response) {
       return response.json();
@@ -100,9 +102,11 @@ button.addEventListener("click", function(ev) {
       var cards = data.cards;
       cards.sort(dynamicSort("name"));
 
-      cards = _.uniqBy(cards, c =>
-        JSON.stringify([c.name, c.attacks, c.hp, c.retreatCost, c.types])
-      );
+      if (hideDuplicates) {
+        cards = _.uniqBy(cards, c =>
+          JSON.stringify([c.name, c.attacks, c.hp, c.retreatCost, c.types])
+        );
+      }
 
       let table = document.createElement("table");
       table.className = "table sortable";
