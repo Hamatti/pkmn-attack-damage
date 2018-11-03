@@ -1,0 +1,65 @@
+header {
+    padding: 40px;
+}
+
+header h1 {
+    text-align: center;
+}
+
+header .description {
+    text-align: center;
+    font-size: 1.1em;
+    width: 60%;
+    margin: auto;
+}
+
+input[type="checkbox"] {
+    margin-left: 10px;
+    margin-right: 30px;
+}
+
+th:nth-child(6), td:nth-child(6) {
+    width: 40%;
+}
+
+/* Sortable tables */
+table.sortable thead {
+    background-color:#eee;
+    color:#666666;
+    font-weight: bold;
+    cursor: default;
+}
+
+table.sortable th:not(.sorttable_sorted):not(.sorttable_sorted_reverse):not(.sorttable_nosort):after {
+    content: " \25B4\25BE"
+}
+
+.hidden {
+    display: none;
+}
+
+body {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+}
+
+.container {
+    flex: 1;
+}
+
+footer {
+    text-align: center;
+    background: black;
+    color: white;
+    padding: 10px;
+}
+
+footer a {
+    color: white;
+    text-decoration: underline
+}
+
+footer a:hover {
+    color: white;
+}

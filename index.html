@@ -7,76 +7,55 @@
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
 
-    <style>
-        input[type="checkbox"] {
-            margin-left: 10px;
-            margin-right: 30px;
-        }
-
-        th:nth-child(6), td:nth-child(6) {
-            width: 40%;
-        }
-
-        /* Sortable tables */
-        table.sortable thead {
-            background-color:#eee;
-            color:#666666;
-            font-weight: bold;
-            cursor: default;
-        }
-
-        table.sortable th:not(.sorttable_sorted):not(.sorttable_sorted_reverse):not(.sorttable_nosort):after {
-            content: " \25B4\25BE"
-        }
-
-        .hidden {
-            display: none;
-        }
-
-        body {
-            display: flex;
-            min-height: 100vh;
-            flex-direction: column;
-        }
-
-        .container {
-            flex: 1;
-        }
-
-        footer {
-            text-align: center;
-            background: black;
-            color: white;
-            padding: 10px;
-        }
-
-        footer a {
-            color: white;
-            text-decoration: underline
-        }
-
-        footer a:hover {
-            color: white;
-        }
-    </style>
+    <link rel="stylesheet" href="style.css">
 
     <script src="sorttable.js"></script>
 
 </head>
 <body>
-    <div class="container">
+    <header>
         <h1>Card Finder - by Attack Damage</h1>
+        <div class="description">
+            <p>
+                <strong>Pokemon Attack Damage Card Finder</strong> is a simple UI to <a href="https://pokemontcg.io" target=_blank>PokemonTCG.io's API</a>. You can search any card in standard (default) or expanded format that provides specific attack damage.
+            </p>
+        </div>
+    </header>
+    <div class="container">
 
-        <label for="damage">
-            Damage:
-            <input type="number" id="damage" name="damage" onkeydown = "if (event.keyCode == 13)
-            document.getElementById('submit').click()" />
-        </label>
-        <button id="submit">Search</button><br>
-        <label for="expanded">Expanded:</label><input type="checkbox" id="expanded" />
-        <label for="duplicates">Hide duplicates (same card with different artwork/rarity):</label><input type="checkbox" id="duplicates" />
+        <h2>Search</h2>
+        <hr>
+        <form>
+            <div class="form-group">
+                <label for="damage">Damage</label>
+                <input type="number" class="form-control" id="damage">
+            </div>
+            <div class="form-group row">
+                <label class="col-sm-2" for="expanded">Expanded Format</label>
+                <div class="col-sm-1">
+                    <div class="form-check">
+                        <label class="form-check-label">
+                            <input class="form-check-input" type="checkbox" id="expanded">
+                        </label>
+                    </div>
+                </div>
+                <label class="col-sm-2" for="duplicates">Remove Duplicates</label>
+                <div class="col-sm-1">
+                    <div class="form-check">
+                        <label class="form-check-label">
+                            <input class="form-check-input" type="checkbox" id="duplicates">
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-sm-2">
+                    <input type="submit" id="submit" value="Search" class="btn btn-primary">
+                </div>
+            </div>
+        </form>
+        <hr>
         <div id="results">
-
         </div>
 
         <a href="https://github.com/hamatti/pkmn-attack-damage" target=_blank><img style="position: absolute; top: 0; left: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_left_darkblue_121621.png" alt="Fork me on GitHub"></a>
