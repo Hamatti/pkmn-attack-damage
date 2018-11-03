@@ -6,8 +6,4 @@ It's a HTML/CSS/Javascript app so there's no build process, no deployment, just 
 
 ## Please note:
 
-As this is a quick and dirty draft, I'll add features slowly.
-
-Things missing or not working exactly as should:
-
-- Filter by other fields than **Damage**
+As this is a quick and dirty draft, the quality of code is horrible. I might refactor it one day or not. Depends on if it needs so many features that rewrite is required.
