@@ -72,7 +72,7 @@ var button = document.getElementById("submit");
 button.addEventListener("click", function(ev) {
   ev.preventDefault();
   var damageValue = document.getElementById("damage").value;
-  if (!!!damageValue) return false;
+  if (damageValue === '') return false;
   var expanded = document.getElementById("expanded").checked;
   var setQuery = "";
   if (expanded) {
