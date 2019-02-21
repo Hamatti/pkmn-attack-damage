@@ -2,6 +2,8 @@
 
 Hitting the correct numbers with attacks is crucial in Pokemon TCG. A lot of the gameplay is calculating base damage and modifiers so I built this small app to help find good cards.
 
+You can use it from [https://hamatti.github.io/pkmn-attack-damage/](https://hamatti.github.io/pkmn-attack-damage/).
+
 ## How to run
 
 It's a HTML/CSS/Javascript app so there's no build process, no deployment, just open up index.html and go.
