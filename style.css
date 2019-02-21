@@ -63,3 +63,7 @@ footer a {
 footer a:hover {
     color: white;
 }
+
+footer .notice {
+    font-size: 0.7em;
+}
