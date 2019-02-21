@@ -12,7 +12,7 @@ Internally, it uses [pokemontcg.io API](https://pokemontcg.io) for the card info
 
 ## Adding a set
 
-To add a set to Standard & Expanded formats, add a new line into both of them with the correct set abbreviation. You can check the correct abbreviation from [pokemontcg.io's docs](https://pokemontcg.io/sets).
+To add a set to Standard & Expanded formats, add a new line into `STANDARD_FORMAT_SETS` with the correct set abbreviation. You can check the correct abbreviation from [pokemontcg.io's docs](https://pokemontcg.io/sets).
 
 ## CONTRIBUTE
 

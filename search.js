@@ -10,7 +10,7 @@ function costMap(cost) {
   return node;
 }
 
-var STANDARD_FORMAT_SETS = [
+const STANDARD_FORMAT_SETS = [
   "sm1",
   "smp",
   "sm2",
@@ -22,11 +22,11 @@ var STANDARD_FORMAT_SETS = [
   "sm7",
   "sm75",
   "sm8"
-].join("|");
+];
 
-var EXPANDED_FORMAT_SETS = [
+const EXPANDED_FORMAT_SETS = [
   "bwp",
-  "bw1",
+  "bw1_STRING",
   "bw2",
   "bw3",
   "bw4",
@@ -54,31 +54,23 @@ var EXPANDED_FORMAT_SETS = [
   "xy10",
   "xy11",
   "xy12",
-  "smp",
-  "sm1",
-  "sm2",
-  "sm3",
-  "sm35",
-  "sm4",
-  "sm5",
-  "sm6",
-  "sm7",
-  "sm75",
-  "sm8"
-].join("|");
+  ...STANDARD_FORMAT_SETS
+];
 
+const STANDARD_FORMAT_SETS_STRING = STANDARD_FORMAT_SETS.join("|");
+const EXPANDED_FORMAT_SETS_STRING = EXPANDED_FORMAT_SETS.join("|");
 var button = document.getElementById("submit");
 
 button.addEventListener("click", function(ev) {
   ev.preventDefault();
   var damageValue = document.getElementById("damage").value;
-  if (damageValue === '') return false;
+  if (damageValue === "") return false;
   var expanded = document.getElementById("expanded").checked;
   var setQuery = "";
   if (expanded) {
-    setQuery = `&setCode=${EXPANDED_FORMAT_SETS}`;
+    setQuery = `&setCode=${EXPANDED_FORMAT_SETS_STRING}`;
   } else {
-    setQuery = `&setCode=${STANDARD_FORMAT_SETS}`;
+    setQuery = `&setCode=${STANDARD_FORMAT_SETS_STRING}`;
   }
 
   var request = new Request(
