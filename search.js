@@ -1,5 +1,48 @@
-const STANDARD_FORMAT_SETS = [ "sm1", "smp", "sm2", "sm3", "sm35", "sm4", "sm5", "sm6", "sm7", "sm75", "sm8" ];
-const EXPANDED_FORMAT_SETS = [ "bwp", "bw1", "bw2", "bw3", "bw4", "bw5", "bw6", "dv1", "bw7", "bw8", "bw9", "bw10", "xyp", "bw11", "xy0", "xy1", "xy2", "xy3", "xy4", "xy5", "dc1", "xy6", "xy7", "xy8", "xy9", "g1", "xy10", "xy11", "xy12", ...STANDARD_FORMAT_SETS ];
+const STANDARD_FORMAT_SETS = [
+  "sm1",
+  "smp",
+  "sm2",
+  "sm3",
+  "sm35",
+  "sm4",
+  "sm5",
+  "sm6",
+  "sm7",
+  "sm75",
+  "sm8"
+];
+const EXPANDED_FORMAT_SETS = [
+  "bwp",
+  "bw1",
+  "bw2",
+  "bw3",
+  "bw4",
+  "bw5",
+  "bw6",
+  "dv1",
+  "bw7",
+  "bw8",
+  "bw9",
+  "bw10",
+  "xyp",
+  "bw11",
+  "xy0",
+  "xy1",
+  "xy2",
+  "xy3",
+  "xy4",
+  "xy5",
+  "dc1",
+  "xy6",
+  "xy7",
+  "xy8",
+  "xy9",
+  "g1",
+  "xy10",
+  "xy11",
+  "xy12",
+  ...STANDARD_FORMAT_SETS
+];
 const STANDARD_FORMAT_SETS_STRING = STANDARD_FORMAT_SETS.join("|");
 const EXPANDED_FORMAT_SETS_STRING = EXPANDED_FORMAT_SETS.join("|");
 
@@ -16,42 +59,49 @@ function dynamicSort(property) {
  * Generates an img tag string for an image of Pokemon type
  */
 function getTypeImage(type) {
-  return `<img src="${'assets/' + type.toLowerCase()}.png" />`;
+  return `<img src="${"assets/" + type.toLowerCase()}.png" />`;
 }
 
 /**
  * Get contents for Pokemon's types, including hidden values that are used for sorting
  */
 function getPokemonTypes(types) {
-  return types.map(type => {
-    const hiddenType = `<span class="hidden">${type.toLowerCase()}</span>`
-    const typeElement = getTypeImage(type);
-    return `${hiddenType}${typeElement}`
-  }).join('')
+  return types
+    .map(type => {
+      const hiddenType = `<span class="hidden">${type.toLowerCase()}</span>`;
+      const typeElement = getTypeImage(type);
+      return `${hiddenType}${typeElement}`;
+    })
+    .join("");
 }
 
 /**
  * Build a DOM string for the rows of cards
  */
 function getCardsDOM(cards, damageValue) {
-  return `${cards.map(card => {
-    let attack = card.attacks.filter(function(attack) {
-      return attack.damage.startsWith(damageValue);
-    })[0];
+  const dom = `${cards
+    .map(card => {
+      let attack = card.attacks.filter(function(attack) {
+        return attack.damage.startsWith(damageValue);
+      })[0];
 
-    if(attack) {
-      return `<tr>
-          <td>${card.name} (${card.id})</td>
+      if (attack) {
+        return `<tr>
+          <td class="card-name">${card.name} (${
+          card.id
+        }) <div class="card-image"><img src="${card.imageUrl}" /></div></td>
           <td>${attack.name}</td>
           <td>${getPokemonTypes(card.types)}</td>
           <td>${attack.damage}</td>
-          <td>${attack.cost.map(cost => getTypeImage(cost)).join('')}</td>
+          <td>${attack.cost.map(cost => getTypeImage(cost)).join("")}</td>
           <td>${attack.text}</td>
         </tr>
-        `
-    }
-  }
-  ).join('')}`
+        `;
+      }
+    })
+    .join("")}`;
+
+  return dom;
 }
 
 //------ Main logic ------------//
@@ -107,7 +157,7 @@ button.addEventListener("click", function(ev) {
         <table class="table sortable">
           <thead>
             <tr>
-            ${headers.map(header => `<th>${header}</th>`).join('')}
+            ${headers.map(header => `<th>${header}</th>`).join("")}
             </tr>
           </thead>
           <tbody>
@@ -117,6 +167,22 @@ button.addEventListener("click", function(ev) {
 
       document.getElementById("results").innerHTML = table;
 
-      sorttable.makeSortable(document.getElementsByTagName('table')[0]);
+      let cardsdom = Array.prototype.slice.call(
+        document.getElementsByClassName("card-name")
+      );
+
+      cardsdom.forEach(element => {
+        element.addEventListener("mouseover", ev => {
+          const imageNode = ev.target.children[0];
+          imageNode.classList.add("card-image-visible");
+        });
+
+        element.addEventListener("mouseout", ev => {
+          const imageNode = ev.target.children[0];
+          imageNode.classList.remove("card-image-visible");
+        });
+      });
+
+      sorttable.makeSortable(document.getElementsByTagName("table")[0]);
     });
 });

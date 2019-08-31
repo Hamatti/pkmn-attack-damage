@@ -23,9 +23,10 @@ th:nth-child(6), td:nth-child(6) {
 }
 
 /* Sortable tables */
+
 table.sortable thead {
-    background-color:#eee;
-    color:#666666;
+    background-color: #eee;
+    color: #666666;
     font-weight: bold;
     cursor: default;
 }
@@ -66,4 +67,24 @@ footer a:hover {
 
 footer .notice {
     font-size: 0.7em;
+}
+
+.card-name {
+    position: relative;
+}
+
+.card-image {
+    display: none;
+}
+
+.card-image-visible {
+    display: block;
+    position: absolute;
+    z-index: 100;
+    top: -50px;
+    left: 100%;
+}
+
+.card-image-visible img {
+    max-width: 245px;
 }
