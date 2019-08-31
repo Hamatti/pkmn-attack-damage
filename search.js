@@ -1,15 +1,13 @@
 const STANDARD_FORMAT_SETS = [
-  "sm1",
-  "smp",
-  "sm2",
-  "sm3",
-  "sm35",
-  "sm4",
   "sm5",
   "sm6",
   "sm7",
   "sm75",
-  "sm8"
+  "sm8",
+  "sm9",
+  "sm10",
+  "det1",
+  "sm115"
 ];
 const EXPANDED_FORMAT_SETS = [
   "bwp",
@@ -41,6 +39,12 @@ const EXPANDED_FORMAT_SETS = [
   "xy10",
   "xy11",
   "xy12",
+  "sm1",
+  "smp",
+  "sm2",
+  "sm3",
+  "sm35",
+  "sm4",
   ...STANDARD_FORMAT_SETS
 ];
 const STANDARD_FORMAT_SETS_STRING = STANDARD_FORMAT_SETS.join("|");
