@@ -44,7 +44,7 @@ function getCardsDOM(cards, damageValue) {
         return `<tr>
           <td class="card-name">${card.name} (${
           card.id
-        }) <div class="card-image"><img src="${card.imageUrl}" /></div></td>
+        }) <div class="card-image"><img src="${card.images.small}" /></div></td>
           <td>${attack.name}</td>
           <td>${getPokemonTypes(card.types)}</td>
           <td>${attack.damage}</td>
