@@ -60,21 +60,18 @@ function getCardsDOM(cards, damageValue) {
 }
 
 //------ Main logic ------------//
-var button = document.getElementById("submit");
+const button = document.getElementById("submit");
 
 button.addEventListener("click", function (ev) {
   ev.preventDefault();
-  var damageValue = document.getElementById("damage").value;
+  const damageValue = document.getElementById("damage").value;
   if (damageValue === "") return false;
-  var expanded = document.getElementById("expanded").checked;
-  var setQuery = "";
-  if (expanded) {
-    setQuery = EXPANDED_FORMAT_SETS_STRING;
-  } else {
-    setQuery = STANDARD_FORMAT_SETS_STRING;
-  }
+  const expanded = document.getElementById("expanded").checked;
+  const setQuery = expanded
+    ? EXPANDED_FORMAT_SETS_STRING
+    : STANDARD_FORMAT_SETS_STRING;
 
-  var request = new Request(
+  const request = new Request(
     `https://api.pokemontcg.io/v2/cards?q=supertype:"Pokemon"%20attacks.damage:"${damageValue}"%20${setQuery}`,
     {
       headers: new Headers({
@@ -83,14 +80,14 @@ button.addEventListener("click", function (ev) {
     }
   );
 
-  var hideDuplicates = document.getElementById("duplicates").checked;
+  const hideDuplicates = document.getElementById("duplicates").checked;
 
   fetch(request)
     .then(function (response) {
       return response.json();
     })
     .then(function (json) {
-      var cards = json.data;
+      let cards = json.data;
       cards.sort(dynamicSort("name"));
 
       if (hideDuplicates) {
