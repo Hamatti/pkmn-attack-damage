@@ -10,10 +10,6 @@ It's a HTML/CSS/Javascript app so there's no build process, no deployment, just 
 
 Internally, it uses [pokemontcg.io API](https://pokemontcg.io) for the card information.
 
-## Adding a set
-
-To add a set to Standard & Expanded formats, add a new line into `STANDARD_FORMAT_SETS` with the correct set abbreviation. You can check the correct abbreviation from [pokemontcg.io's docs](https://pokemontcg.io/sets).
-
 ## CONTRIBUTE
 
 ### Issues
